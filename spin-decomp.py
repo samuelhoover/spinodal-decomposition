@@ -8,12 +8,21 @@ from scipy.ndimage import laplace
 from tqdm import trange
 
 
-# commenting in the v1.1 branch
-# test #3
-def initialize_lattice(N, p):
-    rng = np.random.default_rng(seed=42)
-    return rng.choice([-1, 1], (N, N), 
-                      p=[0.5 + (p / 2), 0.5 - (p / 2)])
+class CahnHilliard:
+    def __init__(self, N, p, num_iter, D, gamma, dt, frame_iter):
+        self.N = N
+        self.p = p
+        self.num_iter = num_iter
+        self.D = D
+        self.gamma = gamma
+        self.dt = dt
+        self.frame_iter = frame_iter
+
+    def initialize_lattice(N, p):
+        rng = np.random.default_rng(seed=42)
+        return rng.choice([-1, 1], (N, N), 
+                          p=[0.5 + (p / 2), 0.5 - (p / 2)])
+
 
 
 def plot_lattice(c, ax, t, i):
