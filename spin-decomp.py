@@ -1,4 +1,5 @@
 import glob
+import os
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -58,8 +59,7 @@ def main(N=100, p=0, num_iter=1000, D=1, gamma=0.5, dt=0.001, frame_iter=10):
     
     # generate gif from snapshots
     path_in = 'figs/*.png'
-    path_out = 'figs/spinodal-decomposition.gif'
-
+    path_out = f'figs/spinodal-decomposition_D-{D}_gamma-{gamma}-p_{p}.gif'
     imgs = []
     for f in sorted(glob.glob(path_in)):
         img = Image.open(f)
@@ -70,6 +70,11 @@ def main(N=100, p=0, num_iter=1000, D=1, gamma=0.5, dt=0.001, frame_iter=10):
         save_all=True, duration=1, loop=0,
     )
 
+    # delete snapshots, keep .gif
+    for f in os.listdir('figs'):
+        if f.endswith('.png'):
+            os.remove(os.path.join('figs', f))
+
 
 if __name__ == "__main__":
-    main(N=200, p=0.2, D=100, gamma=0.5, num_iter=50000, dt=0.0001, frame_iter=100)
+    main(N=200, p=0.4, D=100, gamma=0.5, num_iter=50000, dt=0.0001, frame_iter=100)
