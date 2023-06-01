@@ -8,16 +8,24 @@ from scipy.ndimage import laplace
 from tqdm import trange
 
 
+# commenting in the v1.1 branch
+
 def initialize_lattice(N, p):
     rng = np.random.default_rng(seed=42)
-    return rng.choice([-1, 1], (N, N), p=[0.5 + (p / 2), 0.5 - (p / 2)])
+    return rng.choice([-1, 1], (N, N), 
+                      p=[0.5 + (p / 2), 0.5 - (p / 2)])
 
 
 def plot_lattice(c, ax, t, i):
     im = ax.imshow(c)
     ax.set_xticks([], [])
     ax.set_yticks([], [])
-    # ax.set_title(f'$t = {t:.3f}$')
+    ax.annotate(
+        f'$t = {t:.3f}$', xy=(0.05, 0.95), xycoords='axes fraction',
+        bbox={'color': 'white', 'alpha': 0.8, 
+              'boxstyle': 'Round', 'edgecolor': None}, 
+        ha='left', va='top', fontsize=14
+    ) 
     plt.savefig(f'figs/{i:06d}.png')
  
 
@@ -26,10 +34,7 @@ def forward_euler(x, func, dt, *fargs):
 
 
 def cahn_hilliard(c, D, gamma):
-    x = c ** 3
-    y = c
-    z = gamma * laplace(c, mode='wrap')
-    return D * laplace(x - y - z, mode='wrap')
+    return D * laplace((c ** 3) - c - (gamma * laplace(c, mode='wrap')), mode='wrap')
 
 
 def solve(c, num_iter, D, gamma, dt, frame_iter):
@@ -67,4 +72,4 @@ def main(N=100, p=0, num_iter=1000, D=1, gamma=0.5, dt=0.001, frame_iter=10):
 
 
 if __name__ == "__main__":
-    main(N=200, p=0.2, D=100, gamma=0.5, num_iter=25000, dt=0.0001, frame_iter=100)
+    main(N=200, p=0.2, D=100, gamma=0.5, num_iter=50000, dt=0.0001, frame_iter=1000)
