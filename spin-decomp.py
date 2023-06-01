@@ -59,7 +59,7 @@ def main(N=100, p=0, num_iter=1000, D=1, gamma=0.5, dt=0.001, frame_iter=10):
     
     # generate gif from snapshots
     path_in = 'figs/*.png'
-    path_out = f'figs/spinodal-decomposition_D-{D}_gamma-{gamma}-p_{p}.gif'
+    path_out = f'figs/spinodal-decomposition_D-{D}_gamma-{gamma}_p-{p}.gif'
     imgs = []
     for f in sorted(glob.glob(path_in)):
         img = Image.open(f)
