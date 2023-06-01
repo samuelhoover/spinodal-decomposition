@@ -17,7 +17,12 @@ def plot_lattice(c, ax, t, i):
     im = ax.imshow(c)
     ax.set_xticks([], [])
     ax.set_yticks([], [])
-    # ax.set_title(f'$t = {t:.3f}$')
+    ax.annotate(
+        f'$t = {t:.3f}$', xy=(0.05, 0.95), xycoords='axes fraction',
+        bbox={'color': 'white', 'alpha': 0.8,
+              'boxstyle': 'Round', 'edgecolor': None},
+        ha='left', va='top', fontsize=14
+    )
     plt.savefig(f'figs/{i:06d}.png')
  
 
