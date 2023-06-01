@@ -67,4 +67,4 @@ def main(N=100, p=0, num_iter=1000, D=1, gamma=0.5, dt=0.001, frame_iter=10):
 
 
 if __name__ == "__main__":
-    main(N=200, p=0.2, D=10, gamma=0.5, num_iter=25000, dt=0.0001, frame_iter=100)
+    main(N=200, p=0.2, D=100, gamma=0.5, num_iter=25000, dt=0.0001, frame_iter=100)
