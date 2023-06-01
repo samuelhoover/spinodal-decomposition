@@ -9,7 +9,7 @@ from tqdm import trange
 
 
 # commenting in the v1.1 branch
-
+# test #3
 def initialize_lattice(N, p):
     rng = np.random.default_rng(seed=42)
     return rng.choice([-1, 1], (N, N), 
