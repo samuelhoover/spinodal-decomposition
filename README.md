@@ -4,10 +4,14 @@ Run `python spin-decomp.py` to generate animations for the time evolution of the
 Set the model parameters in the `CahnHilliard` call in the `main()` function.
 
 $D = 100$, $\gamma = 0.5$, and 50/50 mixture ($p = 0$). <br>
-<img src='figs/spinodal-decomposition_D-100_gamma-0.5_p-0.gif' width='400' />
+<p>
+  <img src='/figs/spinodal-decomposition_D-100_gamma-0.5_p-0.gif' width='400' />
+</p>
 
 $D = 100$, $\gamma = 0.5$, and 70/30 mixture ($p = 0.4$) with Ostwald ripening evident.<br>
-<img src='figs/spinodal-decomposition_D-100_gamma-0.5_p-0.4.gif' width='400' />
+<p>
+  <img src='figs/spinodal-decomposition_D-100_gamma-0.5_p-0.4.gif' width='400' />
+</p>
 
 # Dependencies
 NumPy v1.24.3 <br>
