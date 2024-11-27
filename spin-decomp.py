@@ -100,10 +100,15 @@ class CahnHilliard:
             os.makedirs("gifs/tmp")
         plt.savefig(f"gifs/tmp/{i:06d}.png")
 
+        if i in [0, self.num_iter]:
+            plt.savefig(
+                f"gifs/{i:06d}-spin-decomp-d_{self.D}-gamma_{self.gamma}-p_{self.p}.pdf"
+            )
+
     # create animation from snapshots
     def animate(self) -> None:
         path_in: str = "gifs/tmp/*.png"
-        path_out: str = f"gifs/spin-decomp-D_{self.D}-gamma_{self.gamma}-p_{self.p}.gif"
+        path_out: str = f"gifs/spin-decomp-d_{self.D}-gamma_{self.gamma}-p_{self.p}.gif"
         imgs: list[Image.Image] = []
 
         # grab all snapshots
@@ -138,10 +143,10 @@ def main(
 
 if __name__ == "__main__":
     N: int = 500
-    p: float = 0.2
+    p: float = 0.6
     D: float = 200
     gamma: float = 0.5
-    num_iter: int = 10000
+    num_iter: int = 100000
     dt: float = 0.0002
     frame_iter: int = 100
     print("Beginning calculation ...\n")
